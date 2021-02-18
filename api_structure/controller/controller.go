@@ -121,7 +121,7 @@ func Login(c *gin.Context) {
 }
 
 func checkUserExists(user db.Register) bool {
-	rows, err := db.DB.Query(db.CheckUserExits, user.Email)
+	rows, err := db.DB.Query(db.CheckUserExists, user.Email)
 	if err != nil {
 		return false
 	}
@@ -132,7 +132,7 @@ func checkUserExists(user db.Register) bool {
 }
 
 func checkAndRetrieveUserIDViaEmail(createReset db.CreateReset) (int, bool) {
-	rows, err := db.DB.Query(db.CheckUserExits, createReset.Email)
+	rows, err := db.DB.Query(db.CheckUserExists, createReset.Email)
 	if err != nil {
 		return -1, false
 	}
